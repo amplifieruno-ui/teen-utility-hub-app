@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Teen Utility Hub 🚀</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 20px;
+    }
+
+    .nav {
+      background: white;
+      color: #764ba2;
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .box {
+      background: rgba(255,255,255,0.15);
+      padding: 25px;
+      margin: 25px auto;
+      border-radius: 15px;
+      width: 95%;
+      max-width: 450px;
+    }
+
+    input {
+      padding: 10px;
+      width: 80%;
+      border-radius: 6px;
+      border: none;
+      margin: 10px;
+    }
+
+    button {
+      padding: 10px 18px;
+      margin: 6px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      background: white;
+      color: #764ba2;
+    }
+
+    button:hover {
+      transform: scale(1.07);
+      transition: 0.2s;
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="nav">
+  Teen Utility Hub 🚀 <br>
+  Free Online Tools for Teens
+</div>
+
+<!-- Username Generator -->
+<div class="box">
+  <h2>Username Generator</h2>
+  <input type="text" id="nameInput" placeholder="Enter your name">
+  <br>
+  <button onclick="generateUsername()">Generate</button>
+  <button onclick="copyUsername()">Copy</button>
+  <p id="usernameResult"></p>
+</div>
+
+<!-- Password Generator -->
+<div class="box">
+  <h2>Password Generator 🔐</h2>
+  <button onclick="generatePassword()">Generate Password</button>
+  <button onclick="copyPassword()">Copy</button>
+  <p id="passwordResult"></p>
+</div>
+
+<!-- Random Team Picker -->
+<div class="box">
+  <h2>Random Team Picker 🎲</h2>
+  <input type="text" id="namesInput" placeholder="Rahul, Aman, Riya">
+  <br>
+  <button onclick="pickTeam()">Pick Random</button>
+  <p id="teamResult"></p>
+</div>
+
+<!-- Random Number Generator -->
+<div class="box">
+  <h2>Random Number Generator 🔢</h2>
+  <input type="number" id="minNum" placeholder="Min">
+  <input type="number" id="maxNum" placeholder="Max">
+  <br>
+  <button onclick="generateNumber()">Generate Number</button>
+  <p id="numberResult"></p>
+</div>
+
+<script>
+  function generateUsername() {
+    const name = document.getElementById("nameInput").value;
+    const a = ["Shadow","Nova","Blaze","Storm","Pixel"];
+    const b = ["X","Pro","King","007","YT"];
+    const r1 = a[Math.floor(Math.random()*a.length)];
+    const r2 = b[Math.floor(Math.random()*b.length)];
+    document.getElementById("usernameResult").innerText = name + r1 + r2;
+  }
+
+  function copyUsername() {
+    const text = document.getElementById("usernameResult").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Copied!");
+  }
+
+  function generatePassword() {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$!";
+    let pass = "";
+    for (let i = 0; i < 10; i++) {
+      pass += chars.charAt(Math.floor(Math.random()*chars.length));
+    }
+    document.getElementById("passwordResult").innerText = pass;
+  }
+
+  function copyPassword() {
+    const text = document.getElementById("passwordResult").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Copied!");
+  }
+
+  function pickTeam() {
+    const input = document.getElementById("namesInput").value;
+    const names = input.split(",");
+    const randomName = names[Math.floor(Math.random()*names.length)];
+    document.getElementById("teamResult").innerText =
+      "Selected: " + randomName.trim();
+  }
+
+  function generateNumber() {
+    const min = parseInt(document.getElementById("minNum").value);
+    const max = parseInt(document.getElementById("maxNum").value);
+    const random = Math.floor(Math.random() * (max - min + 1)) + min;
+    document.getElementById("numberResult").innerText = random;
+  }
+</script>
+
+</body>
+</html>
